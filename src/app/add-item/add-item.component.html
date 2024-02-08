@@ -1,5 +1,33 @@
-<form (ngSubmit)="addItem()">
-    <input [(ngModel)]="newItem" name="newItem" placeholder="Enter new item">
-    <button type="submit">Add Item</button>
-  </form>
-  
+<h1>Item List</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="addItem()" class="mt-3">
+  <div class="row">
+    <div class="row">
+      <input type="text" formControlName="name" placeholder="Name" class="form-control">
+    </div>
+    <div class="row">
+      <input type="text" formControlName="description" placeholder="Description" class="form-control">
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Add Item</button>
+    </div>
+  </div>
+</form>
